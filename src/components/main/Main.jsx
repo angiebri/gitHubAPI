@@ -67,6 +67,19 @@ const Main = () => {
                     <AtomicSpinner />
                 </div>
             )}
+            <div className='pages'>
+                {pages.map((page, index) => (
+                    <span
+                        key={index}
+                        className={
+                            currentPage == page ? 'current-page' : 'page'
+                        }
+                        onClick={() => dispatch(setCurrentPage(page))}
+                    >
+                        {page}
+                    </span>
+                ))}
+            </div>
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.less'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCount } from '../reducers/reposReducer'
-import { BrowserRouter, Route } from 'react-router-dom'
+import './app.less'
+import { useDispatch } from 'react-redux'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import Main from './main/Main'
+import Card from './card/card'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -19,8 +19,12 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div></div>
-            <Route path='/' Component={Main}></Route>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/card' element={<Card />} />
+                {/*<Route path='*' element={<Error />} />*/}
+                <Route path='*' element={<Navigate to='/' replace />} />
+            </Routes>
         </BrowserRouter>
     )
 }
