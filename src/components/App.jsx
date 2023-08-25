@@ -1,8 +1,9 @@
 import React from 'react'
 import './app.less'
-import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Main from './main/Main'
+import Card from './card/card'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -11,6 +12,9 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Main />} />
+                <Route path='/card' element={<Card />} />
+                {/*<Route path='*' element={<Error />} />*/}
+                <Route path='*' element={<Navigate to='/' replace />} />
             </Routes>
         </BrowserRouter>
     )

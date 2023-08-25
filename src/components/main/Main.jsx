@@ -91,8 +91,6 @@ const Main = () => {
                         {page}
                     </span>
                 ))}
-
-                <Pagination count={pages.length} color='primary' />
             </div>
         </div>
     )
