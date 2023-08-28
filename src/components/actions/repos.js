@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { setIsFetching, setRepos } from "../../reducers/reposReducer"
+import { setFetchError, setIsFetching, setRepos } from "../../reducers/reposReducer"
 
 export const getRepos = (searchQuery) => {
 	console.log("1", searchQuery)
@@ -8,11 +8,20 @@ export const getRepos = (searchQuery) => {
 		searchQuery = "stars:>1"
 	}
 	return async (dispatch) => {
-		dispatch(setIsFetching(true))
-		console.log("3", searchQuery)
-		const response = await axios.get(`https://api.github.com/search/repositories?q=${searchQuery}&sort=stars`)
-		console.log(`https://api.github.com/search/repositories?q=${searchQuery}&sort=stars`)
-		dispatch(setRepos(response.data))
+		try {
+			dispatch(setIsFetching(true))
+
+			const response = await axios.get(`https://api.github.com/search/repositories?q=${searchQuery}&sort=stars&per_page=${perPage}&page=${currentPage}`)
+			dispatch(setRepos(response.data))
+		}
+		catch (e) {
+			dispatch(setFetchError(true))
+			dispatch(setIsFetching(false))
+			setTimeout(() => {
+				dispatch(setFetchError(false))
+			}, 2000)
+		}
+
 	}
 }
 

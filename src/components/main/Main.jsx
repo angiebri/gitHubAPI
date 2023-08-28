@@ -5,6 +5,9 @@ import { getRepos } from '../actions/repos'
 import Repo from './repo/Repo'
 import AtomicSpinner from 'atomic-spinner'
 import styled from 'styled-components'
+import { setCurrentPage } from '../../reducers/reposReducer'
+import { createPages } from '../../utils/PagesCreator'
+import { useNavigate } from 'react-router-dom'
 
 const Button = styled.button`
     background: transparent;
@@ -27,9 +30,14 @@ const Input = styled.input`
     }
 `
 const Main = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const repos = useSelector((state) => state.repos.items)
     const isFetching = useSelector((state) => state.repos.isFetching)
+    const currentPage = useSelector((state) => state.repos.currentPage)
+    const totalCount = useSelector((state) => state.repos.totalCount)
+    const perPage = useSelector((state) => state.repos.perPage)
+    const isFetchError = useSelector((state) => state.repos.isFetchError)
     const [searchValue, setSearchValue] = useState('')
 
     useEffect(() => {
@@ -41,7 +49,12 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <div className='box'>
+            {isFetchError && (
+                <div className='alert alert-danger' role='alert'>
+                    Произошла ошибка! ПОжалуйста обновите страницу!
+                </div>
+            )}
             <div className='search'>
                 <Input
                     value={searchValue}
