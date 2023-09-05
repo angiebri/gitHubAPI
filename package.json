@@ -1,8 +1,12 @@
 {
-  "name": "my-webpack-project",
+  "name": "gitHubAPI",
   "version": "1.0.0",
-  "homepage": "https://angiebri.github.io/gitHubAPI",
+  "repository": {
+    "url": "git+https://github.com/angiebri/gitHubAPI.git"
+  },
+  "homepage": "https://angiebri.github.io/gitHubAPI/",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "npm run build && gh-pages -d dist",
