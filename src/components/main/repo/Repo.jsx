@@ -8,8 +8,11 @@ const Repo = (props) => {
     return (
         <div className='repo'>
             <div className='repo-header'>
-                <div className='repo-header-name'>
-                    <NavLink to={`/card/${repo.owner.login}/${repo.name}`}>
+                <div>
+                    <NavLink
+                        className='repo-header-name'
+                        to={`/card/${repo.owner.login}/${repo.name}`}
+                    >
                         {repo.name}
                     </NavLink>
                 </div>
@@ -30,12 +33,17 @@ const Repo = (props) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <div className='repo-last-commit'>{repo.updated_at}</div>
+            <div className='repo-last-commit'>
+                Последний коммит: {repo.updated_at}
+            </div>
+            <div className='repo-link-text'>
+                Ссылка на репозиторий:
                 <a href={repo.html_url} className='repo-link'>
-                    Ссылка на репоиторий: {repo.html_url}
+                    {repo.html_url}
                 </a>
             </div>
         </div>
     )
 }
+
+export default Repo

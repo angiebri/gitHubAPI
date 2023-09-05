@@ -1,10 +1,15 @@
 import axios from 'axios'
 import { setFetchError, setIsFetching, setRepos } from "../../reducers/reposReducer"
 
+<<<<<<< HEAD
+export const getRepos = (searchQuery = "stars:>1", currentPage, perPage) => {
+	if (!searchQuery) {
+=======
 export const getRepos = (searchQuery) => {
 	console.log("1", searchQuery)
 	if (!searchQuery) {
 		console.log("2", searchQuery)
+>>>>>>> main
 		searchQuery = "stars:>1"
 	}
 	return async (dispatch) => {

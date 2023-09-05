@@ -1,5 +1,8 @@
 import React from 'react'
+<<<<<<< HEAD
+=======
 import { useDispatch } from 'react-redux'
+>>>>>>> main
 import { BrowserRouter } from 'react-router-dom'
 import { Route, Routes, Navigate } from 'react-router-dom/dist'
 import Main from './main/Main'
@@ -8,6 +11,15 @@ import Error from './main/Error'
 import './app.less'
 
 const App = () => {
+<<<<<<< HEAD
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/error' element={<Error />} />
+                <Route path='/card/:username/:reponame' element={<Card />} />
+                <Route path='*' element={<Navigate to='/error' replace />} />
+=======
     const dispatch = useDispatch()
 
     /*const Button = styled.button`
@@ -27,6 +39,7 @@ const App = () => {
                 <Route path='/error' element={<Error />} />
                 <Route path='/card/:username/:reponame' element={<Card />} />
                 {/*<Route path='*' element={<Navigate to='/' replace />} />*/}
+>>>>>>> main
             </Routes>
         </BrowserRouter>
     )

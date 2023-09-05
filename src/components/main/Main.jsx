@@ -7,10 +7,9 @@ import AtomicSpinner from 'atomic-spinner'
 import styled from 'styled-components'
 import { setCurrentPage } from '../../reducers/reposReducer'
 import { createPages } from '../../utils/PagesCreator'
-import { useNavigate } from 'react-router-dom'
 
 const Button = styled.button`
-    background: transparent;
+    background-color: var(--color-page-bg);
     border-radius: 3px;
     border: 2px solid var(--color-blue);
     color: var(--color-blue);
@@ -29,8 +28,8 @@ const Input = styled.input`
         outline: 2px solid var(--color-blue);
     }
 `
+
 const Main = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const repos = useSelector((state) => state.repos.items)
     const isFetching = useSelector((state) => state.repos.isFetching)
@@ -39,13 +38,18 @@ const Main = () => {
     const perPage = useSelector((state) => state.repos.perPage)
     const isFetchError = useSelector((state) => state.repos.isFetchError)
     const [searchValue, setSearchValue] = useState('')
+    const pagesCount = Math.ceil(totalCount / perPage)
+
+    const pages = []
+    createPages(pages, pagesCount, currentPage)
 
     useEffect(() => {
-        dispatch(getRepos())
-    }, [])
+        dispatch(getRepos(searchValue, currentPage, perPage))
+    }, [currentPage])
 
     function searchHandler() {
-        dispatch(getRepos(searchValue))
+        dispatch(setCurrentPage(1))
+        dispatch(getRepos(searchValue, currentPage, perPage))
     }
 
     return (
@@ -81,18 +85,22 @@ const Main = () => {
                 </div>
             )}
             <div className='pages'>
-                {pages.map((page, index) => (
-                    <span
-                        key={index}
-                        className={
-                            currentPage == page ? 'current-page' : 'page'
-                        }
-                        onClick={() => dispatch(setCurrentPage(page))}
-                    >
-                        {page}
-                    </span>
-                ))}
+                <div>
+                    {pages.map((page, index) => (
+                        <button
+                            key={index}
+                            className={
+                                currentPage == page ? 'current-page' : 'page'
+                            }
+                            onClick={() => dispatch(setCurrentPage(page))}
+                        >
+                            {page}
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
     )
 }
+
+export default Main
