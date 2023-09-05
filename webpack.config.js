@@ -21,6 +21,10 @@ module.exports = {
 		new HtmlWebpackPlugin({ template: "./src/index.html" }),
 		new CleanWebpackPlugin()
 	],
+	performance: {
+		maxEntrypointSize: 512000,
+		maxAssetSize: 512000
+	},
 	module: {
 		rules: [
 			{

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-<<<<<<< HEAD
 import './error.less'
 
 const Error = (props) => {
@@ -67,16 +66,6 @@ const Error = (props) => {
                 </defs>
             </svg>
         </>
-=======
-
-const Error = (props) => {
-    const navigate = useNavigate()
-    return (
-        <div style={{ textAlign: 'center' }}>
-            <button onClick={() => navigate(-1)}>GO TO MAIN PAGE</button>
-            ERROR
-        </div>
->>>>>>> main
     )
 }
 

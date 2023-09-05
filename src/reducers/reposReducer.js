@@ -12,20 +12,13 @@ const defaultState = {
 	isFetchError: false
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 export default function reposReducer(state = defaultState, action) {
 	switch (action.type) {
 		case SET_REPOS:
 			return {
 				...state,
 				items: action.payload.items,
-<<<<<<< HEAD
 				totalCount: action.payload.total_count,
-=======
->>>>>>> main
 				isFetching: false
 			}
 		case SET_IS_FETCHING:
@@ -51,8 +44,4 @@ export default function reposReducer(state = defaultState, action) {
 export const setRepos = (repos) => ({ type: SET_REPOS, payload: repos })
 export const setIsFetching = (bool) => ({ type: SET_IS_FETCHING, payload: bool })
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, payload: page })
-<<<<<<< HEAD
 export const setFetchError = (bool) => ({ type: SET_FETCH_ERROR, payload: bool })
-=======
-export const setFetchError = (bool) => ({ type: SET_FETCH_ERROR, payload: bool })
->>>>>>> main
