@@ -1,5 +1,4 @@
-.card {
-	display: flex;
+.card-box {
 	margin-top: 10px;
     color: var(--color-white);
 	font-family: var(--font-family);
@@ -8,13 +7,18 @@
 	  font-size: 1.5em;
 	  font-weight: 700;
 	  margin-left: 10px;
+	  .a {
+		text-decoration: none;
+		color: var(--color-blue);}
 	  
 	}
 	.stars {
 	  margin-left: auto;
+	  font-size: 12px;
+	  display: flex;
 	}
-	
-  }
+}
+
   .contributors{
 		color: var(--color-white);
 		font-family: var(--font-family);
@@ -22,11 +26,27 @@
 .img {
 	height: 60px;
 	width: 60px;
+	border-radius: 50%;
 }
 .arrowBack {
-	//border: none;
+	display: flex;
+	border: none;
 	background: var(--color-page-bg);
     color: var(--color-blue);
+	margin: 10px 0;
+	padding: 0;
+}
+.svg {
 	height: 30px;
 	width: 30px;
 }
+
+.card-repo {
+	display: flex;
+	margin: 15px 0;
+}
+
+@media (min-width: 414px) {
+	.card-box {
+	width: 350px;
+}}
