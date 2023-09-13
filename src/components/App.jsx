@@ -4,7 +4,6 @@ import { Route, Routes, Navigate } from 'react-router-dom/dist'
 import Main from './main/Main'
 import Card from './card/card'
 import Error from './main/Error'
-import './app.less'
 
 const App = () => {
     return (
